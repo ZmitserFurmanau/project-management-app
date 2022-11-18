@@ -1,27 +1,5 @@
-
-
-
-
-.footer {
+.welcome-page {
+	min-height: 100%;
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: #E5E5E5;
-	padding: 1rem;
-}
-
-.rs {
-	display: block;
-	width: 3rem;
-}
-
-.github {
-	display: block;
-	width: 2rem;
-	text-decoration: none;
-	color: #000000;
-}
-
-.github img {
-	width: 1rem;
+	flex-direction: column;
 }
