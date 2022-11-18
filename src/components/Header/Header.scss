@@ -17,6 +17,13 @@
 	display: flex;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+	.block-sign {
+        flex-direction: column;
+		row-gap: 1rem;
+	}
+  }
+
 .sign {
 	width: 7rem;
 	height: 2.5rem;
@@ -53,3 +60,10 @@
 	margin: 0 0.5rem;
 	background: #7acfee;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.select {
+		align-self: center;
+        width: 3rem;
+	}
+  }

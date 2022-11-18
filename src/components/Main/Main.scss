@@ -56,3 +56,9 @@
 	width: 400px;
 	height: 300px;
 }
+
+@media (max-width: 768px) {
+	.image-todo {
+		display: none;
+	}
+  }
