@@ -1,0 +1,38 @@
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1rem;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+	.footer {
+        flex-direction: column;
+		margin-top: 1rem;
+	}
+  }
+
+.rs {
+	display: block;
+	width: 3rem;
+}
+
+.github {
+	display: flex;
+	width: 2rem;
+	align-items: center;
+	text-decoration: none;
+	color: #000000;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.github {
+        flex-direction: column;
+		margin-top: 0.5rem;
+	}
+  }
+
+.github img {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 5px;
+}
