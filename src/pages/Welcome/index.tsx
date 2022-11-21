@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 const Welcome: FC = () => {
   return (
     <div className='welcome-page'>
-      <Header />
+      <Header nameBtnA='Sign in' nameBtnB='Sign up'/>
       <Main />
       <Footer />
     </div>
