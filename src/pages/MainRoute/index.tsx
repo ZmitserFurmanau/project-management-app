@@ -10,7 +10,7 @@ import './MainRoute.scss'
 export function MainRoute () {
   return (
     <div className='main-route'>
-      <Header nameBtnA='Make board' nameBtnB='Profile'/>
+      <Header nameBtnA='Create a board' nameBtnB='Profile'/>
       <BoardsList />
       <Footer />
     </div>
