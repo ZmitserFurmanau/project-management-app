@@ -1,0 +1,35 @@
+.main {
+	flex: 1 0 auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem 4rem;
+	background:  #F9E9C3;
+}
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 20rem;
+}
+
+.title {
+	text-align: center;
+}
+
+.text {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.imageTodo {
+	width: 400px;
+	height: 300px;
+}
+
+@media (max-width: 768px) {
+	.imageTodo {
+		display: none;
+	}
+}

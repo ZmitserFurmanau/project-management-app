@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICard } from '../BoardsLists';
+import { ICard } from '~/pages/MainPage/MainPage';
 import { Button } from '../Button';
 import './ModalBoard.scss'
 

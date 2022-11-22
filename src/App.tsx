@@ -1,16 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Welcome from './pages/Welcome'
-import Header from './components/Header';
-import { MainRoute } from './pages/MainRoute';
+import React, { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '~/components/Header';
+import Footer from './components/Footer';
+import './style/style.scss';
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <MainRoute />
+    <div className="container">
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
