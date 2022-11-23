@@ -8,7 +8,7 @@ const Header: FC = () => {
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
         <NavLink to="/" className={styles.link}>
-          Main
+          Welcome
         </NavLink>
         <NavLink to="/login" className={styles.link}>
           Login
@@ -16,10 +16,14 @@ const Header: FC = () => {
         <NavLink to="/signup" className={styles.link}>
           Sign up
         </NavLink>
-        <NavLink to="/welcome" className={styles.link}>
-          Welcome
+        <NavLink to="/main" className={styles.link}>
+          Main
         </NavLink>
       </div>
+      <select className={styles.selectLang}>
+        <option value="EN">EN</option>
+        <option value="RU">RU</option>
+      </select>
     </div>
   );
 };

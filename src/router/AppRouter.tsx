@@ -10,10 +10,10 @@ const AppRouter: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<MainPage />} />
+        <Route index element={<WelcomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
-        <Route path="welcome" element={<WelcomePage />} />
+        <Route path="main" element={<MainPage />} />
       </Route>
     </Routes>
   );
