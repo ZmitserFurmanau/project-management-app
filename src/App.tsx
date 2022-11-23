@@ -1,14 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Welcome from './pages/Welcome'
+import React, { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '~/components/Header';
+import './style/style.scss';
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <Welcome />
+    <div className="container">
+      <Header />
+      <Outlet />
     </div>
   );
-}
+};
 
 export default App;
