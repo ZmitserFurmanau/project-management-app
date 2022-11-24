@@ -42,3 +42,9 @@ export interface TaskData {
   columnId: string;
   files?: unknown;
 }
+
+export interface DecodedTokenData {
+  userId: string;
+  login: string;
+  iat: number;
+}

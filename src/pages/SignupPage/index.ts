@@ -1,3 +1,3 @@
-import SignupPage from './SignupPage';
+import SingupPage from './SignupPage';
 
-export default SignupPage;
+export default SingupPage;

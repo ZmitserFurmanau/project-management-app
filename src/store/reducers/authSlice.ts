@@ -7,6 +7,8 @@ interface AuthState {
   isLogged: boolean;
   isRegistered: boolean;
   token: string;
+  login: string;
+  userId: string;
   isLoading: boolean;
   error: string;
 }
@@ -15,6 +17,8 @@ const initialState: AuthState = {
   isLogged: false,
   isRegistered: false,
   token: '',
+  login: '',
+  userId: '',
   isLoading: false,
   error: '',
 };
@@ -56,7 +60,32 @@ const setToken = (token: string) => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    restoreToken: state => {
+      const token = localStorage.getItem('token') || '';
+      if (token) {
+        state.token = token;
+        state.isLogged = true;
+      }
+    },
+    setUserId: (state, action: PayloadAction<string>) => {
+      state.userId = action.payload;
+    },
+    setUserLogin: (state, action: PayloadAction<string>) => {
+      state.login = action.payload;
+    },
+    logOut: state => {
+      localStorage.removeItem('token');
+      state.token = '';
+      state.isLogged = false;
+    },
+    resetRegistrationStatus: state => {
+      state.isRegistered = false;
+    },
+    clearError: state => {
+      state.error = '';
+    },
+  },
   extraReducers: {
     [signIn.pending.type]: state => {
       state.isLoading = true;
@@ -88,5 +117,7 @@ export const authSlice = createSlice({
     },
   },
 });
+
+export const { restoreToken, logOut, resetRegistrationStatus, setUserId, setUserLogin, clearError } = authSlice.actions;
 
 export default authSlice.reducer;
