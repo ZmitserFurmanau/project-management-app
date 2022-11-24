@@ -1,10 +1,13 @@
 .card {
-    width: 20%;
-    height: 8rem;
+    // max-width: 230px;
+    // flex: 1 0 230px;
+    height: 100%;
     background: #b4cbfd;
     border-radius: 0.2rem;
     box-shadow: 3px 3px 5px rgb(95, 94, 94);
-    padding: 0.5rem;
+    padding: 0.7rem;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .icons {
@@ -18,7 +21,7 @@
 
 .title {
     text-align: center;
-    
+    margin: 1rem 0;
 }
 
 .description {

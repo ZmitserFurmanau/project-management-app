@@ -10,10 +10,10 @@ const CardBoard: FC = () => {
   return (
     <div className={styles.card}>
       <div className={styles.icons}>
-      <FontAwesomeIcon icon={faTrash} className={styles.icon} />
-      <FontAwesomeIcon icon={faPen} className={styles.icon} />
+        <FontAwesomeIcon icon={faTrash} className={styles.icon} />
+        <FontAwesomeIcon icon={faPen} className={styles.icon} />
       </div>
-      <h3 className={styles.title}>Title</h3>
+      <h4 className={styles.title}>Title</h4>
       <p className={styles.description}>Description</p>
     </div>
   );
