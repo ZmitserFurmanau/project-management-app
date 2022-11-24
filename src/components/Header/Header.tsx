@@ -25,10 +25,10 @@ const Header: FC = () => {
           </NavLink>
         )}
       </div>
-      {/* <select className={styles.selectLang}>
+      <select className={styles.selectLang}>
         <option value="EN">EN</option>
         <option value="RU">RU</option>
-      </select> */}
+      </select>
     </div>
   );
 };
