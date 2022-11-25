@@ -1,11 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import authReducer from './reducers/authSlice';
-import mainPageReducer from './reducers/mainPageReducer';
+import mainPageReducer from './reducers/mainPageSlice';
+import modalBoardReducer from './reducers/modalBoardSlice';
+import cardBoardReducer from './reducers/cardBoardSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     mainPage: mainPageReducer,
+    modalBoard: modalBoardReducer,
+    cardBoard: cardBoardReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
 });
