@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ICard } from '~/pages/MainPage/MainPage';
 
 export interface MainPageState {
-  openModal: boolean;
-  openModalDel: boolean;
+  isOpenModalEdit: boolean;
+  isOpenModalDelete: boolean;
   currentData: ICard;
 }
 
 const initialState: MainPageState = {
-  openModal: false,
-  openModalDel: false,
+  isOpenModalEdit: false,
+  isOpenModalDelete: false,
   currentData: {
     id: '',
     title: '',
@@ -22,19 +22,19 @@ export const cardBoardSlice = createSlice({
   initialState,
   reducers: {
     openModalEdit(state) {
-      state.openModal = true;
+      state.isOpenModalEdit = true;
     },
     closeModalEdit(state) {
-      state.openModal = false;
+      state.isOpenModalEdit = false;
     },
     setCurrentData(state, action) {
       state.currentData = action.payload;
     },
     openModalDelete(state) {
-      state.openModalDel = true;
+      state.isOpenModalDelete = true;
     },
     closeModalDelete(state) {
-      state.openModalDel = false;
+      state.isOpenModalDelete = false;
     },
   },
 });

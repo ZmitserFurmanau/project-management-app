@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import styles from './CardBoard.module.scss';
 import { Card, CardActions, CardContent, Typography, Button } from '@mui/material';
 import { ICard } from '~/pages/MainPage/MainPage';
@@ -21,8 +21,8 @@ interface ICardBoardProps {
 
 const CardBoard: FC<ICardBoardProps> = props => {
   const dataCardsBoards = useSelector<RootState, ICard[]>(state => state.mainPage.dataCardsBoards);
-  const openModal = useSelector<RootState, boolean>(state => state.cardBoard.openModal);
-  const openModalDel = useSelector<RootState, boolean>(state => state.cardBoard.openModalDel);
+  const isOpenModalEdit = useSelector<RootState, boolean>(state => state.cardBoard.isOpenModalEdit);
+  const isOpenModalDelete = useSelector<RootState, boolean>(state => state.cardBoard.isOpenModalDelete);
   const currentData = useSelector<RootState, ICard>(state => state.cardBoard.currentData);
   const dispatch = useDispatch();
 
@@ -31,7 +31,6 @@ const CardBoard: FC<ICardBoardProps> = props => {
   };
 
   const updateDataCard = (data: ICard) => {
-    console.log(data);
     dispatch(updateDataCardBoards(data));
   };
 
@@ -41,11 +40,11 @@ const CardBoard: FC<ICardBoardProps> = props => {
     dispatch(setCurrentData(currentData));
   };
 
-  const onClickDelete = () => {
+  const onClickOpenDelete = () => {
     dispatch(openModalDelete());
   };
 
-  const handleCloseModalDelete = () => {
+  const onCloseModalDelete = () => {
     dispatch(closeModalDelete());
   };
 
@@ -59,7 +58,7 @@ const CardBoard: FC<ICardBoardProps> = props => {
           <Typography align="center">{props.data.description}</Typography>
         </CardContent>
         <CardActions className={styles.cardActions}>
-          <Button color="secondary" variant="contained" size="small" onClick={onClickDelete}>
+          <Button color="secondary" variant="contained" size="small" onClick={onClickOpenDelete}>
             Delete
           </Button>
           <Button color="info" variant="contained" size="small" onClick={onClickEdit}>
@@ -69,13 +68,13 @@ const CardBoard: FC<ICardBoardProps> = props => {
       </Card>
       <ModalBoard
         id={currentData.id}
-        open={openModal}
+        open={isOpenModalEdit}
         closeModal={handleClose}
         dataCard={updateDataCard}
         valueTitle={currentData.title}
         valueDescription={currentData.description}
       />
-      <ModalConfirm id={props.data.id} open={openModalDel} closeModal={handleCloseModalDelete} />
+      <ModalConfirm id={props.data.id} open={isOpenModalDelete} closeModal={onCloseModalDelete} />
     </>
   );
 };
