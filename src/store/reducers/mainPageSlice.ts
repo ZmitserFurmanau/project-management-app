@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICard } from '~/pages/MainPage/MainPage';
+import { ICard } from '~/types/interface';
 
-export interface MainPageState {
+interface MainPageState {
   isVisibleModalBoard: boolean;
+  isVisibleModalBoardDelete: boolean;
+  IdCurrentBoard: string;
   dataCardsBoards: Array<ICard>;
 }
 
 const initialState: MainPageState = {
   isVisibleModalBoard: false,
+  isVisibleModalBoardDelete: false,
+  IdCurrentBoard: '',
   dataCardsBoards: [],
 };
 
@@ -15,28 +19,33 @@ export const mainPageSlice = createSlice({
   name: 'mainPage',
   initialState,
   reducers: {
-    visibleMB(state) {
-      state.isVisibleModalBoard = true;
+    isOpen(state, action) {
+      state.isVisibleModalBoard = action.payload;
     },
-    unvisibleMB(state) {
-      state.isVisibleModalBoard = false;
+    isOpenDelete(state, action) {
+      console.log(action.payload);
+      const { stateModal, currentID } = action.payload;
+
+      state.isVisibleModalBoardDelete = stateModal;
+      state.IdCurrentBoard = currentID;
     },
     setdataCardsBoards(state, action) {
       state.dataCardsBoards.push(action.payload);
     },
     updateDataCardBoards(state, action) {
-      console.log(action);
       const arr = state.dataCardsBoards;
-      const index = arr.findIndex(element => element.id === action.payload.id);
-      arr[index].title = action.payload.title;
-      arr[index].description = action.payload.description;
+      const index = arr.findIndex(element => element.idBoard === action.payload.idBoard);
+      arr[index].titleBoard = action.payload.titleBoard;
+      arr[index].descriptionBoard = action.payload.descriptionBoard;
     },
-    deleteDataCardBoards(state, action) {
-      state.dataCardsBoards = state.dataCardsBoards.filter(element => element.id !== action.payload);
+    deleteDataCardBoards(state) {
+      const id = state.IdCurrentBoard;
+      state.dataCardsBoards = state.dataCardsBoards.filter(element => element.idBoard !== id);
+      state.IdCurrentBoard = '';
     },
   },
 });
 
 export default mainPageSlice.reducer;
-export const { visibleMB, unvisibleMB, setdataCardsBoards, updateDataCardBoards, deleteDataCardBoards } =
+export const { isOpen, isOpenDelete, setdataCardsBoards, updateDataCardBoards, deleteDataCardBoards } =
   mainPageSlice.actions;
