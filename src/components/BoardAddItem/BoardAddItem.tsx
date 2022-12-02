@@ -12,7 +12,7 @@ import styles from '../Board/Board.module.scss';
 
 const BoardAddItem: FC<ModalWindowFormProps> = props => {
   const { currentBoard } = useAppSelector(state => state.currentBoard);
-  const { currentUser } = useAppSelector(state => state.currentUser);
+  const { userId } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -55,9 +55,10 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
         props.columnId,
         newTaskTitle,
         (existingTasks as TaskData[]).length + 1,
-        '',
-        currentUser,
+        'description',
+        userId,
       );
+      console.log(newTask);
       dispatch(
         setColumnTaskData({
           columnId: props.columnId,
