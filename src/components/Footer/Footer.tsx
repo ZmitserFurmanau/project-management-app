@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import './Footer.scss';
 import rs from '../../assets/rs.svg';
 import github from '../../assets/github.png';
+
+import './Footer.module.scss';
 
 const Footer: FC = () => {
   return (
