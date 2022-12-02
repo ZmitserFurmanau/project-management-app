@@ -1,18 +1,18 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 import ModalWindowForm from '../ModalWindowForm/ModalWindowForm';
-import styles from '../Board/Board.module.scss';
-import BoardTask from '../BoardTask';
-import BoardColumn from '../BoardColumn';
 import { ModalWindowFormProps } from '~/types/board';
 import { createColumn } from '~/services/columns';
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
-import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
-import { ColumnData } from '~/types/api';
-import { createTask } from '~/services/tasks';
+import { setCurrentBoard, setColumnTaskData } from '~/store/reducers/currentBoardSlice';
+import { ColumnData, TaskData } from '~/types/api';
+import { createTask, getAllTasks } from '~/services/tasks';
+
+import styles from '../Board/Board.module.scss';
 
 const BoardAddItem: FC<ModalWindowFormProps> = props => {
   const { currentBoard } = useAppSelector(state => state.currentBoard);
+  const { currentUser } = useAppSelector(state => state.currentUser);
   const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
     }
 
     if (props.options.type === 'task') {
-      // request create new task
+      createNewTask(data);
     }
   };
 
@@ -47,11 +47,26 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
     return data;
   };
 
-  // const createNewTask = async (newTaskTitle: string) => {
-  //   const data = await createTask(currentBoard.id, columnId, newTaskTitle, order, description, userId);
-  //   dispatch(());
-  //   return data;
-  // };
+  const createNewTask = async (newTaskTitle: string) => {
+    if (currentBoard && props.columnId) {
+      const existingTasks = await getAllTasks(currentBoard.id, props.columnId);
+      const newTask = await createTask(
+        currentBoard.id,
+        props.columnId,
+        newTaskTitle,
+        (existingTasks as TaskData[]).length + 1,
+        '',
+        currentUser,
+      );
+      dispatch(
+        setColumnTaskData({
+          columnId: props.columnId,
+          tasks: [...(existingTasks as TaskData[]), newTask as TaskData],
+        }),
+      );
+      return newTask;
+    }
+  };
 
   return (
     <>
@@ -62,7 +77,7 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
         shouldCloseOnOverlayClick
       >
         <ModalWindowForm
-          options={{ options: props.options }}
+          options={{ options: props.options, columnId: props.columnId }}
           setData={{ setData: setData }}
           handleCloseModal={{
             handleCloseModal: handleCloseModal,

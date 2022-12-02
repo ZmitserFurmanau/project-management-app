@@ -8,6 +8,7 @@ import { getAllTasks } from '~/services/tasks';
 import { TaskData } from '~/types/api';
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { setColumnTaskData } from '~/store/reducers/currentBoardSlice';
+import { deleteColumn } from '~/services/columns';
 
 import styles from '../Board/Board.module.scss';
 
@@ -28,8 +29,9 @@ const BoardColumn: FC<BoardColumnProps> = props => {
     }
   };
 
-  const handleDeleteColumn = () => {
-    // request delete column
+  const handleDeleteColumn = async (): Promise<void> => {
+    await deleteColumn(currentBoard.id, props.columnId);
+    // add state update
   };
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
             />
           );
         })}
-      <BoardAddItem options={taskOptions} />
+      <BoardAddItem options={taskOptions} columnId={props.columnId} />
     </div>
   );
 };

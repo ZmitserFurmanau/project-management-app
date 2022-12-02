@@ -13,16 +13,23 @@ const Board: FC = () => {
   const { currentBoard } = useAppSelector(state => state.currentBoard);
   const dispatch = useAppDispatch();
 
-  const getColumns = async () => {
+  const getColumns = async (): Promise<void> => {
     if (currentBoard.id) {
-      const data = await getAllColumns(currentBoard.id);
-      dispatch(setCurrentBoard({ id: currentBoard.id, title: currentBoard.title, columns: data as ColumnData[] }));
+      const columns = await getAllColumns(currentBoard.id);
+      dispatch(
+        setCurrentBoard({
+          id: currentBoard.id,
+          title: currentBoard.title,
+          columns: columns as ColumnData[],
+        }),
+      );
     }
   };
 
   useEffect(() => {
     getColumns();
   }, []);
+
   return (
     <div className={styles.board}>
       {currentBoard.columns &&
@@ -37,7 +44,7 @@ const Board: FC = () => {
             />
           );
         })}
-      <BoardAddItem options={columnOptions} />
+      <BoardAddItem options={columnOptions} columnId={''} />
     </div>
   );
 };
