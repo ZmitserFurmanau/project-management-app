@@ -1,54 +1,11 @@
-export interface BoardState {
-  id: string;
-  title: string;
-}
-
-export interface BoardResponse {
-  boards: BoardState[];
-  columns: ColumnState[];
-  tasks: TaskState[];
-}
-
-export interface Test {
-  id: number;
-  title: string;
-  items: TestItems[];
-}
-
-export interface TestItems {
-  id: number;
-  title: string;
-}
-
-export interface ColumnState {
-  id: string;
-  title: string;
-  order: number;
-}
-
-export interface TaskState {
-  id: string;
-  title: string;
-  order: number;
-  description: string;
-  userId: string;
-  boardId: string;
-  columnId: string;
-}
-
-export interface QueryParams {
-  userId: string;
-  boardId: string;
-  columns: ColumnState;
-  columnId: string;
-  tasks: TaskState;
-  taskId: string;
-}
+import { TaskData } from './api';
 
 export interface BoardColumnProps {
   key: string;
-  title: string;
-  id: string;
+  columnTitle: string;
+  columnId: string;
+  columnOrder: number;
+  columnTasks: TaskData[];
 }
 
 export interface BoardTaskProps {
@@ -58,11 +15,6 @@ export interface BoardTaskProps {
   order: number;
   description: string;
   userId: string;
-  boardId: string;
-  columnId: string;
-}
-
-export interface GetAllTasksParams {
   boardId: string;
   columnId: string;
 }
