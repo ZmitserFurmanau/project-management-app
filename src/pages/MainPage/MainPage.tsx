@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { List, ListItemButton, ListItem, Button } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import BackspaceIcon from '@mui/icons-material/Backspace';
+import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { getAllBoards, getBoard } from '~/services/boards';
 import { setBoards } from '~/store/reducers/boardSlice';
-import { setCurrentBoard, deleteCurrentBoard } from '~/store/reducers/currentBoardSlice';
-import { BoardData, ColumnData } from '~/types/api';
-import ModalWindowForm from '~/components/ModalWindowForm/ModalWindowForm';
+import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
+import { BoardData } from '~/types/api';
 
 import styles from './MainPage.module.scss';
 
@@ -16,6 +16,7 @@ const MainPage: FC = () => {
   const { boards } = useAppSelector(state => state.boards);
   const { isLogged } = useAppSelector(state => state.auth);
   const [countArr, setCountArr] = useState<BoardData[]>([]);
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const openBoard = (boardId: string) => {
@@ -30,7 +31,7 @@ const MainPage: FC = () => {
     const boardToCount = countArr.find(item => board.id === item.id) as BoardData;
     const columns = boardToCount?.columns?.length || 0;
     let tasksNumber = 0;
-    const tasks = columns
+    columns
       ? boardToCount.columns?.forEach(item => {
           if (item.tasks) {
             tasksNumber += item.tasks.length;
@@ -59,7 +60,7 @@ const MainPage: FC = () => {
     <div className={styles.mainPage}>
       <div className={styles.main_route_sidebar}>
         <NavLink to="/board" className={`${styles.board} ${styles.boardDefaulted}`}>
-          <p>Создать доску</p>
+          <p>{t('MAIN_ROUTE.CREATE_BOARD')}</p>
         </NavLink>
         {Array.isArray(boards) && (
           <List>
@@ -70,8 +71,12 @@ const MainPage: FC = () => {
                     {countArr && (
                       <List>
                         <ListItem>{board.title}</ListItem>
-                        <ListItem>Columns: {tasksCount(board).columns}</ListItem>
-                        <ListItem>Tasks: {tasksCount(board).tasksNumber}</ListItem>
+                        <ListItem>
+                          {t('MAIN_ROUTE.COLUMNS_COUNT')} {tasksCount(board).columns}
+                        </ListItem>
+                        <ListItem>
+                          {t('MAIN_ROUTE.TASKS_COUNT')} {tasksCount(board).tasksNumber}
+                        </ListItem>
                       </List>
                     )}
                   </NavLink>

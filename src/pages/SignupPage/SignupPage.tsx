@@ -1,36 +1,41 @@
 import React, { FC, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '~/hooks/redux';
-import { signUp, signIn, resetRegistrationStatus, clearError } from '~/store/reducers/authSlice';
-import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import Loader from '~/components/Loader';
+import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
+import Button from '@mui/material/Button';
 import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
+
+import { useAppDispatch, useAppSelector } from '~/hooks/redux';
+import { signUp, signIn, resetRegistrationStatus, clearError } from '~/store/reducers/authSlice';
+import Loader from '~/components/Loader';
 import { SignUpRequest } from '~/types/api';
-import { SignUpErrors } from '~/types/enums';
 
 import styles from './SignupPage.module.scss';
 
 const SignupPage: FC = () => {
   const dispatch = useAppDispatch();
-  const { isRegistered, isLoading, error } = useAppSelector(state => state.auth);
   const navigate = useNavigate();
+  const { isRegistered, isLoading, error } = useAppSelector(state => state.auth);
+  const { lang } = useAppSelector(state => state.locale);
+  const { t } = useTranslation();
 
   const validate = (values: SignUpRequest) => {
     const errors = {} as SignUpRequest;
     if (!values.name) {
-      errors.name = SignUpErrors.NAME_REQUIRED;
+      errors.name = t('SIGNUP.NAME_REQUIRED');
     } else if (values.name.length < 2) {
-      errors.name = SignUpErrors.NAME_INVALID;
+      errors.name = t('SIGNUP.NAME_INVALID');
     }
     if (!values.login) {
-      errors.login = SignUpErrors.LOGIN_REQUIRED;
+      errors.login = t('SIGNUP.LOGIN_REQUIRED');
     } else if (values.login.length < 4) {
-      errors.login = SignUpErrors.LOGIN_INVALID;
+      errors.login = t('SIGNUP.LOGIN_INVALID');
     }
     if (!values.password) {
-      errors.password = SignUpErrors.PASSWORD_REQUIRED;
+      errors.password = t('SIGNUP.PASSWORD_REQUIRED');
+    } else if (values.login.length < 6) {
+      errors.password = t('SIGNUP.PASSWORD_INVALID');
     }
     return errors;
   };
@@ -75,6 +80,10 @@ const SignupPage: FC = () => {
     }
   }, [dispatch, formik, isRegistered]);
 
+  useEffect(() => {
+    formik.setErrors({});
+  }, [lang]);
+
   const moveBack = () => {
     navigate('/');
   };
@@ -84,7 +93,7 @@ const SignupPage: FC = () => {
       <ToastContainer />
       <form className={styles.form} onSubmit={formik.handleSubmit}>
         <label className={styles.label}>
-          <span className={styles.labelText}>Имя:</span>
+          <span className={styles.labelText}>{t('SIGNUP.NAME_LABEL')}</span>
           <input
             className={styles.input}
             id="name"
@@ -96,7 +105,7 @@ const SignupPage: FC = () => {
           {formik.errors.name ? <div className={styles.error}>{formik.errors.name}</div> : null}
         </label>
         <label className={styles.label}>
-          <span className={styles.labelText}>Логин:</span>
+          <span className={styles.labelText}>{t('SIGNUP.LOGIN_LABEL')}</span>
           <input
             className={styles.input}
             id="login"
@@ -108,7 +117,7 @@ const SignupPage: FC = () => {
           {formik.errors.login ? <div className={styles.error}>{formik.errors.login}</div> : null}
         </label>
         <label className={styles.label}>
-          <span className={styles.labelText}>Пароль:</span>
+          <span className={styles.labelText}>{t('SIGNUP.PASSWORD_LABEL')}</span>
           <input
             className={styles.input}
             id="password"
@@ -120,14 +129,14 @@ const SignupPage: FC = () => {
           {formik.errors.password ? <div className={styles.error}>{formik.errors.password}</div> : null}
         </label>
         <Button variant="contained" type="submit" sx={{ marginTop: 2 }}>
-          Зарегистрироваться
+          {t('SIGNUP.BUTTON_LABEL')}
         </Button>
       </form>
       <div style={{ opacity: isLoading ? 1 : 0 }}>
         <Loader />
       </div>
       <Button variant="outlined" type="button" onClick={moveBack} sx={{ position: 'absolute', right: 25, top: 25 }}>
-        ← Назад
+        ← {t('SIGNUP.BUTTON_BACK')}
       </Button>
     </div>
   );

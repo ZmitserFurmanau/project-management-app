@@ -11,7 +11,7 @@
 }
 
 .lds-roller div:after {
-  content: ' ';
+  content: " ";
   display: block;
   position: absolute;
   width: 7px;
@@ -101,4 +101,10 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
