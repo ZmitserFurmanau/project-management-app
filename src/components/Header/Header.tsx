@@ -9,11 +9,8 @@ import styles from './Header.module.scss';
 
 const Header: FC = () => {
   const { isLogged } = useAppSelector(state => state.auth);
-<<<<<<< HEAD
   const { t } = useTranslation();
-=======
 
->>>>>>> 97f9c5114bb71972832df9d5857aa18c1a1abde9
   return (
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
@@ -28,17 +25,9 @@ const Header: FC = () => {
           </>
         )}
         {isLogged && (
-<<<<<<< HEAD
           <NavLink to="/logout" className={styles.link}>
             {t('LOGOUT_LINK')}
           </NavLink>
-=======
-          <>
-            <NavLink to="/logout" className={styles.link}>
-              Выйти
-            </NavLink>
-          </>
->>>>>>> 97f9c5114bb71972832df9d5857aa18c1a1abde9
         )}
         <LangCheckbox />
       </div>
