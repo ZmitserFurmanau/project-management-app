@@ -1,23 +1,22 @@
 import React, { FC } from 'react';
-import todo from '../../assets/todo.svg';
 
-import './WelcomePage.module.scss';
+import styles from './WelcomePage.module.scss';
 
 const WelcomePage: FC = () => {
   return (
-    <main className="main">
-      <div className="about">
-        <h1 className="title">Удобное приложение для списка дел</h1>
-        <h3 className="text">
+    <main className={styles.main}>
+      <div className={styles.about}>
+        <h1 className={styles.title}>Удобное приложение для списка дел</h1>
+        <h3 className={styles.text}>
           С помощью данной программы вы сможете планировать свои дела, составлять списки покупок и многое другое. В
           приложении есть возможность добавлять свои заметки и создавать свои списки, например, список покупок или
           список дел на день.
         </h3>
-        <a className="sign" href="/"></a>
+        <a className={styles.sign} href="login">
+          Начать
+        </a>
       </div>
-      <div className="image-todo">
-        <img src={todo} alt="todo" />
-      </div>
+      <img className={styles.image_todo} src={require(`../../assets/todo.svg`)} alt="logoTodo" />
     </main>
   );
 };

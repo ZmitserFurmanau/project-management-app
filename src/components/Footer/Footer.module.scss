@@ -2,37 +2,54 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  background-color: #447fff;
+  padding: 10px 50px 10px 50px;
+
+  .footer__project {
+    display: flex;
+    gap: 10px;
+
+    &_school {
+      max-height: 60px;
+    }
+
+    &_task {
+      max-height: 60px;
+    }
+  }
+
+  .footer__team {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 0 10px;
+
+    &_link {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+
+  .footer__year {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-decoration: none;
+    color: #ffffff;
+  }
 }
-@media (min-width: 320px) and (max-width: 480px) {
+
+@media (max-width: 650px) {
   .footer {
     flex-direction: column;
-    margin-top: 1rem;
+    padding: 10px 0 10px 0;
   }
-}
 
-.rs {
-  display: block;
-  width: 3rem;
-}
-
-.github {
-  display: flex;
-  width: 2rem;
-  align-items: center;
-  text-decoration: none;
-  color: #000000;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .github {
-    flex-direction: column;
-    margin-top: 0.5rem;
+  .footer__project {
+    max-width: 100%;
+    height: auto;
   }
-}
-
-.github img {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 5px;
 }

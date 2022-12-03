@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+
 import BoardTask from '../BoardTask';
 import BoardAddItem from '../BoardAddItem';
 import { handleFocus } from '~/utils/utils';

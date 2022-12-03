@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import App from '../App';
 import MainPage from '~/pages/MainPage';
 import WelcomePage from '~/pages/WelcomePage';

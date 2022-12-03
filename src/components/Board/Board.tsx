@@ -1,4 +1,6 @@
 import React, { FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
 import { getAllColumns } from '~/services/columns';
 import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
@@ -6,8 +8,6 @@ import { ColumnData, TaskData } from '~/types/api';
 import { columnOptions } from '~/utils/constants';
 import BoardAddItem from '../BoardAddItem';
 import BoardColumn from '../BoardColumn';
-import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
 
 import styles from './Board.module.scss';
 

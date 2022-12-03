@@ -1,29 +1,31 @@
 import React, { FC } from 'react';
-import rs from '../../assets/rs.svg';
-import github from '../../assets/github.png';
 
-import './Footer.module.scss';
+import styles from './Footer.module.scss';
 
 const Footer: FC = () => {
   return (
-    <footer className="footer">
-      <a className="rs" href="https://rs.school/react/">
-        <img src={rs} alt="rs-school" />
-      </a>
-      <a className="github" href="https://github.com/ZmitserFurmanau">
-        <img src={github} alt="rs-school" />
-        Дмитрий
-      </a>
-      <a className="github" href="https://github.com/Glav-Tz">
-        <img src={github} alt="rs-school" />
-        Антон
-      </a>
-      <a className="github" href="https://github.com/alexandr2075">
-        <img src={github} alt="rs-school" />
-        Александр
-      </a>
-      <p>2022</p>
-    </footer>
+    <div className={styles.footer}>
+      <div className={styles.footer__project}>
+        <a href="https://rs.school/react/">
+          <img className={styles.footer__project_school} src={require(`../../assets/rs.svg`)} alt="logoRs" />
+        </a>
+        <a href="https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/project-management-system-EN.md">
+          <img className={styles.footer__project_task} src={require(`../../assets/github.png`)} alt="logoGit" />
+        </a>
+      </div>
+      <div className={styles.footer__team}>
+        <a className={styles.footer__team_link} href="https://github.com/ZmitserFurmanau">
+          Zmitser Furmanau
+        </a>
+        <a className={styles.footer__team_link} href="https://github.com/alexandr2075">
+          Alexander Li
+        </a>
+        <a className={styles.footer__team_link} href="https://github.com/Glav-Tz">
+          Anton Gorshkov
+        </a>
+      </div>
+      <div className={styles.footer__year}>2022г.</div>
+    </div>
   );
 };
 
