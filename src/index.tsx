@@ -13,11 +13,13 @@ const container = document.getElementById('app') as HTMLElement;
 const root = createRoot(container);
 
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
 );
 
 window.addEventListener('message', e => {

@@ -13,7 +13,6 @@ import { LoginErrors } from '~/types/enums';
 import styles from './LoginPage.module.scss';
 
 const LoginPage: FC = () => {
-
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useAppSelector(state => state.auth);

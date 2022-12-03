@@ -6,6 +6,7 @@ import styles from './Header.module.scss';
 
 const Header: FC = () => {
   const { isLogged } = useAppSelector(state => state.auth);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.navbar}>
@@ -20,9 +21,11 @@ const Header: FC = () => {
           </>
         )}
         {isLogged && (
-          <NavLink to="/logout" className={styles.link}>
-            Выйти
-          </NavLink>
+          <>
+            <NavLink to="/logout" className={styles.link}>
+              Выйти
+            </NavLink>
+          </>
         )}
       </div>
     </div>
