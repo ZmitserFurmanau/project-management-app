@@ -13,9 +13,7 @@ const WelcomePage: FC = () => {
           приложении есть возможность добавлять свои заметки и создавать свои списки, например, список покупок или
           список дел на день.
         </h3>
-        <a className="sign" href="/">
-          <span>Начать</span>
-        </a>
+        <a className="sign" href="/"></a>
       </div>
       <div className="image-todo">
         <img src={todo} alt="todo" />
