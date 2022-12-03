@@ -57,7 +57,7 @@ const LoginPage: FC = () => {
   }, [dispatch, error]);
 
   useEffect(() => {
-    formik.validateForm();
+    formik.setErrors({});
   }, [lang]);
 
   const moveBack = () => {

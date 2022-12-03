@@ -81,7 +81,7 @@ const SignupPage: FC = () => {
   }, [dispatch, formik, isRegistered]);
 
   useEffect(() => {
-    formik.validateForm();
+    formik.setErrors({});
   }, [lang]);
 
   const moveBack = () => {

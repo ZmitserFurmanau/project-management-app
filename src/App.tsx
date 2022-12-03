@@ -1,7 +1,5 @@
 import React, { FC, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 
 import Header from '~/components/Header';
 import { restoreLang } from './store/reducers/langSlice';
@@ -9,29 +7,13 @@ import { restoreToken, setUserId, setUserLogin } from './store/reducers/authSlic
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import { getDecodedToken } from '~/utils/getDecodedToken';
 import { DecodedTokenData } from './types/api';
-import en from '~/locales/en.json';
-import ru from '~/locales/ru.json';
+import '~/locales';
 
 import './style/style.scss';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
   const { token } = useAppSelector(state => state.auth);
-
-  i18n.use(initReactI18next).init({
-    resources: {
-      en: {
-        translation: en,
-      },
-      ru: {
-        translation: ru,
-      },
-    },
-    lng: 'en',
-    interpolation: {
-      escapeValue: false,
-    },
-  });
 
   useEffect(() => {
     dispatch(restoreToken());
