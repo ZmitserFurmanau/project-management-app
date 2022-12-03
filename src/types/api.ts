@@ -48,3 +48,8 @@ export interface DecodedTokenData {
   login: string;
   iat: number;
 }
+
+export interface UpdateColumnTasks {
+  columnId: string;
+  tasks: TaskData[];
+}

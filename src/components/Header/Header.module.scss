@@ -1,16 +1,21 @@
 .wrapper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   background-color: #447fff;
   height: 85px;
 }
 
 .navbar {
+<<<<<<< HEAD
   padding: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+=======
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  padding: 0 30px;
+>>>>>>> 97f9c5114bb71972832df9d5857aa18c1a1abde9
 }
 
 .link {
