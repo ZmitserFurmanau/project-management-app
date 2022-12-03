@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
+
 import styles from './WelcomePage.module.scss';
-import todo from '~/assets/todo.svg';
-import { Button } from '~/components/Button';
 
 const WelcomePage: FC = () => {
   return (
@@ -13,11 +12,11 @@ const WelcomePage: FC = () => {
           приложении есть возможность добавлять свои заметки и создавать свои списки, например, список покупок или
           список дел на день.
         </h3>
-        <Button name="Get started" signup="/signup" />
+        <a className={styles.sign} href="login">
+          Начать
+        </a>
       </div>
-      <div className={styles.imageTodo}>
-        <img src={todo} alt="todo" />
-      </div>
+      <img className={styles.image_todo} src={require(`../../assets/todo.svg`)} alt="logoTodo" />
     </main>
   );
 };

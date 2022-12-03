@@ -1,1 +1,0 @@
-export { ModalBoard } from './ModalBoard';

@@ -1,11 +1,13 @@
 import React, { FC, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+
 import Header from '~/components/Header';
+import Footer from '~/components/Footer';
 import { restoreToken, setUserId, setUserLogin } from './store/reducers/authSlice';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import { getDecodedToken } from '~/utils/getDecodedToken';
 import { DecodedTokenData } from './types/api';
-import Footer from './components/Footer';
+
 import './style/style.scss';
 
 const App: FC = () => {

@@ -1,46 +1,89 @@
-import React, { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { Button } from '~/components/Button';
-import CardBoard from '~/components/CardBoard';
-import { ModalBoard } from '~/components/Modals/ModalBoard';
-import { RootState } from '~/store';
-import { isOpen } from '~/store/reducers/mainPageSlice';
+import React, { FC, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { List, ListItemButton, ListItem, Button } from '@mui/material';
+import BackspaceIcon from '@mui/icons-material/Backspace';
+
+import { useAppDispatch, useAppSelector } from '~/hooks/redux';
+import { getAllBoards, getBoard } from '~/services/boards';
+import { setBoards } from '~/store/reducers/boardSlice';
+import { setCurrentBoard, deleteCurrentBoard } from '~/store/reducers/currentBoardSlice';
+import { BoardData, ColumnData } from '~/types/api';
+import ModalWindowForm from '~/components/ModalWindowForm/ModalWindowForm';
+
 import styles from './MainPage.module.scss';
-import Button from '@mui/material/Button';
-import { Typography, Grid } from '@mui/material';
-import { Container } from '@mui/system';
-import { getDataCardsBoards } from '~/store/selectors';
-import { MainPageText } from './data';
 
 const MainPage: FC = () => {
-  const dispatch = useDispatch();
+  const { boards } = useAppSelector(state => state.boards);
+  const { isLogged } = useAppSelector(state => state.auth);
+  const [countArr, setCountArr] = useState<BoardData[]>([]);
+  const dispatch = useAppDispatch();
 
-  const dataCardsBoards = useSelector(getDataCardsBoards);
+  const openBoard = (boardId: string) => {
+    dispatch(setCurrentBoard(boards.find(board => board.id === boardId) as BoardData));
+  };
 
-  const { title, btnCreateBoard } = MainPageText;
+  const deleteBoard = (boardId: string) => {
+    dispatch(setBoards(boards.filter(board => board.id !== boardId)));
+  };
+
+  const tasksCount = (board: BoardData) => {
+    const boardToCount = countArr.find(item => board.id === item.id) as BoardData;
+    const columns = boardToCount?.columns?.length || 0;
+    let tasksNumber = 0;
+    const tasks = columns
+      ? boardToCount.columns?.forEach(item => {
+          if (item.tasks) {
+            tasksNumber += item.tasks.length;
+          }
+        })
+      : 0;
+    return { columns, tasksNumber };
+  };
+
+  useEffect(() => {
+    if (isLogged) {
+      const getBoards = async (): Promise<void> => {
+        const data = await getAllBoards();
+        if (Array.isArray(data)) {
+          dispatch(setBoards(data as BoardData[]));
+          const arr = await Promise.all(data.map(async item => await getBoard(item.id)));
+          const arrFilter = arr.filter(item => item !== undefined) as BoardData[];
+          setCountArr(arrFilter ? [...arrFilter] : []);
+        }
+      };
+      getBoards();
+    }
+  }, [dispatch, isLogged]);
 
   return (
     <div className={styles.mainPage}>
-      <>
-        <Container fixed style={{ margin: 15 }}>
-          <Typography variant="h4" gutterBottom>
-            {title}
-          </Typography>
-          <Button variant="contained" onClick={() => dispatch(isOpen(true))}>
-            {btnCreateBoard}
-          </Button>
-        </Container>
-        <Grid container style={{ padding: 15 }} spacing={2}>
-          {dataCardsBoards.map(({ idBoard, titleBoard, descriptionBoard }) => {
-            return (
-              <Grid key={idBoard} item xs={12} sm={6} md={4} lg={3}>
-                <CardBoard idBoard={idBoard} titleBoard={titleBoard} descriptionBoard={descriptionBoard} />
-              </Grid>
-            );
-          })}
-        </Grid>
-        <ModalBoard />;
-      </>
+      <div className={styles.main_route_sidebar}>
+        <NavLink to="/board" className={`${styles.board} ${styles.boardDefaulted}`}>
+          <p>Создать доску</p>
+        </NavLink>
+        {Array.isArray(boards) && (
+          <List>
+            {boards.map((board: BoardData) => {
+              return (
+                <ListItem key={board.id} onClick={() => openBoard(board.id)} className={styles.boardWrapper}>
+                  <NavLink to="board" className={styles.board}>
+                    {countArr && (
+                      <List>
+                        <ListItem>{board.title}</ListItem>
+                        <ListItem>Columns: {tasksCount(board).columns}</ListItem>
+                        <ListItem>Tasks: {tasksCount(board).tasksNumber}</ListItem>
+                      </List>
+                    )}
+                  </NavLink>
+                  <div className={styles.deleteIcon_wrapper}>
+                    <BackspaceIcon color="error" className={styles.deleteIcon} onClick={() => deleteBoard(board.id)} />
+                  </div>
+                </ListItem>
+              );
+            })}
+          </List>
+        )}
+      </div>
     </div>
   );
 };
