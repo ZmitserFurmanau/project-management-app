@@ -58,6 +58,7 @@ const LoginPage: FC = () => {
 
   useEffect(() => {
     formik.setErrors({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
   const moveBack = () => {

@@ -33,7 +33,7 @@
   border-color: #f9f9f9;
   border-style: solid;
   box-shadow: 0 0 12px 0 #bcbcbc;
-  color: rgb(110, 110, 110)
+  color: rgb(110, 110, 110);
 }
 
 .boardDefaulted {
@@ -68,14 +68,14 @@
 
 .deleteIcon:not(:hover) {
   cursor: pointer;
-  opacity: .8;
-  transition: .2s;
+  opacity: 0.8;
+  transition: 0.2s;
   transform: rotate(0deg);
 }
 
 .deleteIcon:hover {
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   opacity: 1;
   transform: rotate(-45deg);
 }
