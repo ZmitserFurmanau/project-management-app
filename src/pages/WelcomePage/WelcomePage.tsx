@@ -1,8 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { useTranslation } from 'react-i18next';
-
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
+import { useTranslation } from 'react-i18next';
 import { resetIsDeleted, clearError } from '~/store/reducers/authSlice';
 
 import styles from './WelcomePage.module.scss';

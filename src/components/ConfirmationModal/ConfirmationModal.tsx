@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
-
 import { ConfirmationModalProps } from './types';
 
 import styles from './ConfirmationModal.module.scss';

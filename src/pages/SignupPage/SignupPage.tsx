@@ -1,22 +1,22 @@
 import React, { FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
-import Button from '@mui/material/Button';
-import { useFormik } from 'formik';
-
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { signUp, signIn, resetRegistrationStatus, clearError } from '~/store/reducers/authSlice';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import Loader from '~/components/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import { useFormik } from 'formik';
 import { SignUpRequest } from '~/types/api';
+import { useTranslation } from 'react-i18next';
 
 import styles from './SignupPage.module.scss';
 
 const SignupPage: FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { isRegistered, isLoading, error } = useAppSelector(state => state.auth);
   const { lang } = useAppSelector(state => state.locale);
+  const navigate = useNavigate();
+
   const { t } = useTranslation();
 
   const validate = (values: SignUpRequest) => {
@@ -145,4 +145,5 @@ const SignupPage: FC = () => {
     </>
   );
 };
+
 export default SignupPage;

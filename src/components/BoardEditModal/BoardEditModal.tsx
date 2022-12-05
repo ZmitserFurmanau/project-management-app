@@ -1,9 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import Button from '@mui/material/Button';
-
 import { BoardEditModalProps } from './types';
+import Button from '@mui/material/Button';
 import { useAppSelector } from '~/hooks/redux';
 import { BoardData } from '~/types/api';
 import { getBoard, updateBoard } from '~/services/boards';

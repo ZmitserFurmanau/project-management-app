@@ -1,14 +1,13 @@
 import React, { FC, useEffect } from 'react';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
-
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { signIn, clearError } from '~/store/reducers/authSlice';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import Loader from '~/components/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import { useFormik } from 'formik';
 import { LoginRequest } from '~/types/api';
+import { useTranslation } from 'react-i18next';
 
 import styles from './LoginPage.module.scss';
 
@@ -17,6 +16,7 @@ const LoginPage: FC = () => {
   const navigate = useNavigate();
   const { isLoading, error } = useAppSelector(state => state.auth);
   const { lang } = useAppSelector(state => state.locale);
+
   const { t } = useTranslation();
 
   const validate = (values: LoginRequest) => {

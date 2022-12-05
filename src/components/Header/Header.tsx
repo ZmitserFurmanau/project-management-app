@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
-
 import { useAppSelector } from '~/hooks/redux';
 import LangCheckbox from '../LangCheckbox';
 import BoardCreateModal from '../BoardCreateModal';
@@ -42,25 +41,27 @@ const Header: FC = () => {
               <Button variant="contained" onClick={() => navigate('/logout')} sx={{ margin: 0.5 }}>
                 {t('LOGOUT_LINK')}
               </Button>
-              <Button variant="contained" onClick={() => navigate('/profile')} sx={{ margin: 0.5 }}>
-                {t('EDIT_PROFILE_LINK')}
-              </Button>
-              <Button variant="contained" onClick={() => onBoardCreate()} sx={{ margin: 0.5 }}>
-                {t('CREATE_BOARD_LINK')}
-              </Button>
               {pathname === '/welcome' ? (
                 <Button variant="contained" onClick={() => navigate('/')} sx={{ margin: 0.5 }}>
                   {t('MAIN_PAGE_LINK')}
                 </Button>
               ) : (
-                <Button variant="contained" onClick={() => navigate('/welcome')} sx={{ margin: 0.5 }}>
-                  {t('WELCOME_PAGE_LINK')}
-                </Button>
+                <>
+                  <Button variant="contained" onClick={() => navigate('/profile')} sx={{ margin: 0.5 }}>
+                    {t('EDIT_PROFILE_LINK')}
+                  </Button>
+                  <Button variant="contained" onClick={() => onBoardCreate()} sx={{ margin: 0.5 }}>
+                    {t('CREATE_BOARD_LINK')}
+                  </Button>
+                  <Button variant="contained" onClick={() => navigate('/welcome')} sx={{ margin: 0.5 }}>
+                    {t('WELCOME_PAGE_LINK')}
+                  </Button>
+                </>
               )}
             </>
           ) : (
             <>
-              <Button variant="contained" onClick={() => navigate('/login')} sx={{ margin: 0.5 }}>
+              <Button variant="contained" onClick={() => navigate('/signin')} sx={{ margin: 0.5 }}>
                 {t('LOGIN_LINK')}
               </Button>
               <Button variant="contained" onClick={() => navigate('/signup')} sx={{ margin: 0.5 }}>

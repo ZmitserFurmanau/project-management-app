@@ -1,5 +1,4 @@
 import axios, { AxiosError } from 'axios';
-
 import { ENDPOINT_URL } from '~/utils/constants';
 import { getToken } from '~/utils/getToken';
 import { ColumnData } from '~/types/api';

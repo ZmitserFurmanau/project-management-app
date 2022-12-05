@@ -4,6 +4,7 @@ import { BoardData } from '~/types/api';
 export interface BoardResponse {
   [key: string]: BoardData[];
 }
+
 const initialState: BoardResponse = {
   boards: [],
 };

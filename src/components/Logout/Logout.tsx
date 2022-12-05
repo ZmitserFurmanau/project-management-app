@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useAppDispatch } from '~/hooks/redux';
 import { useTranslation } from 'react-i18next';
-
 import { logOut } from '~/store/reducers/authSlice';
 import Loader from '../Loader';
 

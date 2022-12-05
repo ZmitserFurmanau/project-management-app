@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { AxiosError } from 'axios';
-
 import {
   LoginResponse,
   LoginRequest,

@@ -63,7 +63,7 @@ const SearchForm: FC<SearchCallbackProps> = props => {
         <UserSelect userArray={formState.users} callback={handleUserChange} />
       ) : (
         <TextField
-          placeholder={t('MAIN_ROUTE.SEARCH_PLACEHOLDER')}
+          placeholder="text"
           variant="outlined"
           size="small"
           sx={{ marginRight: '5px', width: '250px' }}

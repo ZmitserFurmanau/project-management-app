@@ -1,5 +1,4 @@
 import { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-
 import { store } from '~/store';
 import { logOut, setError } from '~/store/reducers/authSlice';
 import { getLang } from '~/utils/getLang';
@@ -18,7 +17,6 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 };
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  // const errData = error.response?.data;
   const lang = getLang();
   if (error && error?.response?.status === 400) {
     store.dispatch(setError(lang === 'en' ? ServerResponseEn.UNKNOWN_ERROR : ServerResponseRu.UNKNOWN_ERROR));

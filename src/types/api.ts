@@ -36,6 +36,7 @@ export interface UserData {
 export interface BoardData {
   id: string;
   title: string;
+  description: string;
   columns?: ColumnData[];
 }
 
@@ -61,11 +62,6 @@ export interface DecodedTokenData {
   userId: string;
   login: string;
   iat: number;
-}
-
-export interface UpdateColumnTasks {
-  columnId: string;
-  tasks: TaskData[];
 }
 
 export interface AxiosErrorData {

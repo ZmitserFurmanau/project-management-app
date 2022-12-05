@@ -1,9 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import Button from '@mui/material/Button';
-
 import { TaskEditModalProps } from './types';
+import Button from '@mui/material/Button';
 import { useAppSelector } from '~/hooks/redux';
 import { TaskData, UserData } from '~/types/api';
 import { getTask, updateTask } from '~/services/tasks';
@@ -11,7 +10,7 @@ import { getAllUsers } from '~/services/users';
 
 import styles from './TaskEditModal.module.scss';
 
-const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, columnId, taskId }) => {
+const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, setTaskTitleProp, columnId, taskId }) => {
   const modalRoot = document.getElementById('modal') as HTMLElement;
 
   const [taskTitle, setTaskTitle] = useState('');
@@ -67,8 +66,10 @@ const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, columnId
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateTask(currentBoard.id, columnId, columnId, taskId, taskTitle, taskOrder, taskDescr, taskUser);
+    const description = taskDescr === '' ? 'description' : taskDescr;
+    await updateTask(currentBoard.id, columnId, columnId, taskId, taskTitle, taskOrder, description, taskUser);
     setIsActive(false);
+    setTaskTitleProp(taskTitle);
   };
 
   return createPortal(
@@ -95,7 +96,6 @@ const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, columnId
                 onChange={e => updateDescr(e)}
                 value={taskDescr}
                 rows={5}
-                required
               ></textarea>
             </label>
             <label className={styles.label}>

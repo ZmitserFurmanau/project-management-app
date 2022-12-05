@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import { UserCallbackProps } from '~/types/mainRoute';
 import { useTranslation } from 'react-i18next';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-import { UserCallbackProps } from '~/types/mainRoute';
 
 const UserSelect: FC<UserCallbackProps> = props => {
   const [category, setCategory] = React.useState('');

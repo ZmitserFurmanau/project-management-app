@@ -1,16 +1,16 @@
-import React, { FC, Suspense, lazy } from 'react';
+import React, { FC, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-
-const LoginPage = lazy(() => import('~/pages/LoginPage'));
-const SignupPage = lazy(() => import('~/pages/SignupPage'));
-const EditProfilePage = lazy(() => import('~/pages/EditProfilePage'));
-const Board = lazy(() => import('~/components/Board'));
-const MainPage = lazy(() => import('~/pages/MainPage'));
-const WelcomePage = lazy(() => import('~/pages/WelcomePage'));
 import Logout from '~/components/Logout';
 import { useAppSelector } from '~/hooks/redux';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Loader from '~/components/Loader';
+
+import LoginPage from '~/pages/LoginPage';
+import SignupPage from '~/pages/SignupPage';
+import EditProfilePage from '~/pages/EditProfilePage';
+import Board from '~/components/Board';
+import MainPage from '~/pages/MainPage';
+import WelcomePage  from '~/pages/WelcomePage';
 
 const AppRouter: FC = () => {
   const { isLogged } = useAppSelector(state => state.auth);
@@ -42,11 +42,12 @@ const AppRouter: FC = () => {
               <Route path="logout" element={<Logout />} />
               <Route path="profile" element={<EditProfilePage />} />
               <Route path="board/:id" element={<Board />} />
+              <Route path="welcome" element={<WelcomePage />} />
             </>
           ) : (
             <>
               <Route index element={<WelcomePage />} />
-              <Route path="login" element={<LoginPage />} />
+              <Route path="signin" element={<LoginPage />} />
               <Route path="signup" element={<SignupPage />} />
             </>
           )}

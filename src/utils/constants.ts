@@ -3,7 +3,6 @@ export const ENDPOINT_URL = 'https://project-management-app-backend.up.railway.a
 export const ItemTypes = {
   TASK: 'task',
   COLUMN: 'column',
-  ITEM: 'item',
 };
 
 export const searchCategory = {

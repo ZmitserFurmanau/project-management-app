@@ -27,7 +27,6 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
   }
 
   const setData = (data: string): void => {
-    console.log(data);
     if (props.options.type === 'column') {
       createNewColumn(data);
     }
@@ -37,21 +36,24 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
     }
   };
 
-  const createNewColumn = async (newColumnTitle: string) => {
+  const createNewColumn = async (newColumnTitle: string): Promise<ColumnData> => {
     const data = await createColumn(currentBoard.id, newColumnTitle);
     dispatch(
       setCurrentBoard({
         id: currentBoard.id,
         title: currentBoard.title,
+        description: currentBoard.description,
         columns: [...(currentBoard.columns || []), data as ColumnData],
       }),
     );
-    return data;
+    return data as ColumnData;
   };
 
   const createNewTask = async (newTaskTitle: string) => {
     if (currentBoard.id && props.columnId) {
-      const existingTasks = await getAllTasks(currentBoard.id, props.columnId);
+      const existingTasks = ((await getAllTasks(currentBoard.id, props.columnId)) as TaskData[]).sort(
+        (a, b) => a.order - b.order,
+      );
       const newTask = await createTask(currentBoard.id, props.columnId, newTaskTitle, 'description', userId);
       dispatch(
         setColumnTaskData({
@@ -78,15 +80,13 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
             handleCloseModal: handleCloseModal,
           }}
         />
-        <i className={`${styles.cancelBtn} ${styles.modalCloseBtn}`} onClick={handleCloseModal}>
+        <span className={`${styles.cancelBtn} ${styles.modalCloseBtn}`} onClick={handleCloseModal}>
           ×
-        </i>
+        </span>
       </Modal>
-      {!isModalOpen && (
-        <button className={styles.btn} onClick={handleOpenModal}>
-          {props.options.btnTitle}
-        </button>
-      )}
+      <button className={styles.btn} onClick={handleOpenModal}>
+        {props.options.btnTitle}
+      </button>
     </>
   );
 };
