@@ -16,7 +16,7 @@ export default function SearchForm() {
   return (
     <form onSubmit={e => handleSubmit(e)}>
       <TextField label="Enter text" variant="outlined"></TextField>
-      <SearchSelect />
+      <SearchSelect callback={handleSelectChange} />
       <Button type="submit" variant="contained">
         Search
       </Button>
