@@ -5,10 +5,13 @@ import BackspaceIcon from '@mui/icons-material/Backspace';
 import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
-import { getAllBoards, getBoard } from '~/services/boards';
+import { deleteBoard, getAllBoards, getBoard } from '~/services/boards';
 import { setBoards } from '~/store/reducers/boardSlice';
 import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
 import { BoardData } from '~/types/api';
+import Loader from '~/components/Loader';
+import ConfirmationModal from '~/components/ConfirmationModal';
+// import SearchForm from '~/components/SearchForm/SearchForm';
 
 import styles from './MainPage.module.scss';
 
@@ -16,15 +19,31 @@ const MainPage: FC = () => {
   const { boards } = useAppSelector(state => state.boards);
   const { isLogged } = useAppSelector(state => state.auth);
   const [countArr, setCountArr] = useState<BoardData[]>([]);
+  const [pageState, setPageState] = useState({
+    state: false,
+    boardOnDelete: '',
+    isLoading: false,
+  });
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const openBoard = (boardId: string) => {
-    dispatch(setCurrentBoard(boards.find(board => board.id === boardId) as BoardData));
+  const onModalClick = async (resp: boolean) => {
+    setPageState(prev => {
+      return { ...prev, isLoading: true };
+    });
+    if (resp) {
+      const boardId = pageState.boardOnDelete;
+      const deleteResp = await deleteBoard(boardId);
+      if (deleteResp) dispatch(setBoards(boards.filter(board => board.id !== boardId)));
+      // else {
+      //   alert('Something went wrong')
+      // }
+    }
+    setPageState({ state: false, boardOnDelete: '', isLoading: false });
   };
 
-  const deleteBoard = (boardId: string) => {
-    dispatch(setBoards(boards.filter(board => board.id !== boardId)));
+  const openBoard = (boardId: string): void => {
+    dispatch(setCurrentBoard(boards.find(board => board.id === boardId) as BoardData));
   };
 
   const tasksCount = (board: BoardData) => {
@@ -81,13 +100,25 @@ const MainPage: FC = () => {
                     )}
                   </NavLink>
                   <div className={styles.deleteIcon_wrapper}>
-                    <BackspaceIcon color="error" className={styles.deleteIcon} onClick={() => deleteBoard(board.id)} />
+                    <BackspaceIcon
+                      color="error"
+                      className={styles.deleteIcon}
+                      onClick={() =>
+                        setPageState(prev => {
+                          return { ...prev, state: true, boardOnDelete: board.id };
+                        })
+                      }
+                    />
                   </div>
                 </ListItem>
               );
             })}
           </List>
         )}
+      </div>
+      <ConfirmationModal callback={onModalClick} text={t('MAIN_ROUTE.DELETE_MESSAGE')} isActive={pageState.state} />
+      <div style={{ opacity: pageState.isLoading ? 1 : 0 }}>
+        <Loader />
       </div>
     </div>
   );
