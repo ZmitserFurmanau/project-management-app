@@ -26,6 +26,8 @@
     "PASSWORD_REQUIRED": "required field",
     "PASSWORD_INVALID": "must be 6 characters or more"
   },
+  "BOARD": {
+  },
   "MAIN_ROUTE": {
     "CREATE_BOARD": "Create board",
     "COLUMNS_COUNT": "Columns: ",

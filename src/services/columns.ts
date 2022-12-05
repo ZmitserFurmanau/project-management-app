@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios';
+
 import { ENDPOINT_URL } from '~/utils/constants';
 import { getToken } from '~/utils/getToken';
 import { ColumnData } from '~/types/api';
@@ -17,13 +18,12 @@ export const getAllColumns = async (boardId: string) => {
   }
 };
 
-export const createColumn = async (boardId: string, title: string, order: number) => {
+export const createColumn = async (boardId: string, title: string) => {
   try {
     const response = await axios.post<ColumnData>(
       `${ENDPOINT_URL}/boards/${boardId}/columns`,
       {
         title,
-        order,
       },
       {
         headers: { Authorization: `Bearer ${getToken()}` },

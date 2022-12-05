@@ -13,3 +13,9 @@ export const taskOptions: ModalWindowFormOptions = {
   btnTitle: 'Добавить таску',
   placeholderText: 'Ввести заголовок для этой таски',
 };
+
+export const ItemTypes = {
+  TASK: 'task',
+  COLUMN: 'column',
+  ITEM: 'item',
+};

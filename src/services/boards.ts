@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios';
+
 import { ENDPOINT_URL } from '~/utils/constants';
 import { getToken } from '~/utils/getToken';
 import { BoardData } from '~/types/api';
