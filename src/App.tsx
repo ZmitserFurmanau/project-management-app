@@ -30,11 +30,11 @@ const App: FC = () => {
   }, [dispatch, token]);
 
   return (
-    <div className="container">
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 };
 

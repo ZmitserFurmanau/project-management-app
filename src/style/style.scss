@@ -24,6 +24,10 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   max-width: 1920px;
   margin: 0 auto;
@@ -33,6 +37,7 @@ a {
   text-decoration: none;
   color: inherit;
   transition: color 0.3s, border-bottom 0.3s;
+  color: $base-color;
 
   &:hover {
     color: #ffbb00;
@@ -111,4 +116,11 @@ a {
   height: 85px;
   top: 0;
   background-color: #b0d0ff;
+}
+
+.footer-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

@@ -52,5 +52,11 @@
     "CREATE_BOARD": "Create board",
     "COLUMNS_COUNT": "Columns: ",
     "TASKS_COUNT": "Tasks: "
+  },
+  "WELCOME_PAGE": {
+    "SUBTITLE": "project management system",
+    "DESCR": "The application helps to achieve the set goals for an individual in a team or group of developers",
+    "DESCR_RS": "The application was completed as the final task of the course ",
+    "TEAM_TITLE": "Our team:"
   }
 }
