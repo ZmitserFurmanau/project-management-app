@@ -75,7 +75,8 @@
 
 .tasksItem {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .listBtns {
@@ -133,4 +134,17 @@
 
 .modalCloseBtn {
   height: 90%;
+}
+
+.edit-btn {
+  height: 30px;
+  margin-left: 10px;
+  background-image: url('../assets/img/edit.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 }

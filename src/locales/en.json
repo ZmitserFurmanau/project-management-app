@@ -43,11 +43,17 @@
     "CONFIRM_BUTTON": "Yes",
     "REJECT_BUTTON": "No",
     "CREATE_BOARD_BUTTON": "Create",
+    "UPDATE_TASK_BUTTON": "Update",
     "CANCEL_BUTTON": "Cancel"
   },
   "CREATE_BOARD": {
     "TITLE": "Title:",
     "DESCR": "Description:"
+  },
+  "UPDATE_TASK": {
+    "TITLE": "Title:",
+    "DESCR": "Description:",
+    "USER": "Person in charge:"
   },
   "EDIT_PROFILE": {
     "TITLE": "Edit profile:",
