@@ -3,11 +3,16 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -150px;
+  margin-left: -180px;
   margin-top: -100px;
   border-radius: 10px;
   padding: 20px 30px;
   background-color: #fff;
+
+  @media screen and (max-width: 500px) {
+    width: 250px;
+    margin-left: -150px;
+  }
 }
 
 .text {
@@ -20,5 +25,4 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ;
 }
