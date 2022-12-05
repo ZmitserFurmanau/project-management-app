@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 
 import { useAppSelector } from '~/hooks/redux';
 import LangCheckbox from '../LangCheckbox';
+import BoardCreateModal from '../BoardCreateModal';
 
 import styles from './Header.module.scss';
 
@@ -14,6 +15,7 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [isSticky, setIsSticky] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -24,6 +26,10 @@ const Header: FC = () => {
       }
     };
   }, []);
+
+  const onBoardCreate = () => {
+    setIsModalActive(true);
+  };
 
   return (
     <>
@@ -36,6 +42,9 @@ const Header: FC = () => {
               </Button>
               <Button variant="contained" onClick={() => navigate('/profile')} sx={{ margin: 0.5 }}>
                 {t('EDIT_PROFILE_LINK')}
+              </Button>
+              <Button variant="contained" onClick={() => onBoardCreate()} sx={{ margin: 0.5 }}>
+                {t('CREATE_BOARD_LINK')}
               </Button>
               {pathname === '/welcome' ? (
                 <Button variant="contained" onClick={() => navigate('/')} sx={{ margin: 0.5 }}>
@@ -60,6 +69,7 @@ const Header: FC = () => {
           <LangCheckbox />
         </div>
       </div>
+      <BoardCreateModal isActive={isModalActive} setIsActive={setIsModalActive} />
       <div style={{ height: '130px' }}></div>
     </>
   );

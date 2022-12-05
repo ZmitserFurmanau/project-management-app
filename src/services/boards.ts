@@ -18,12 +18,13 @@ export const getAllBoards = async () => {
   }
 };
 
-export const createBoard = async (title: string) => {
+export const createBoard = async (title: string, description: string) => {
   try {
     const response = await axios.post<BoardData>(
       `${ENDPOINT_URL}/boards`,
       {
         title,
+        description,
       },
       {
         headers: { Authorization: `Bearer ${getToken()}` },
@@ -57,8 +58,7 @@ export const deleteBoard = async (id: string) => {
     const response = await axios.delete<null>(`${ENDPOINT_URL}/boards/${id}`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
-    console.log('response del >>>>', response);
-    return response;
+    return response.data;
   } catch (e) {
     if (e instanceof Error) {
       const error = e as AxiosError;

@@ -5,6 +5,7 @@
   "EDIT_PROFILE_LINK": "Профиль",
   "MAIN_PAGE_LINK": "На главную",
   "WELCOME_PAGE_LINK": "О приложении",
+  "CREATE_BOARD_LINK": "Создать доску",
   "BUTTON_BACK": "Назад",
   "BUTTON_SAVE": "Сохранить",
   "BUTTON_DELETE_USER": "Удалить профиль",
@@ -40,7 +41,13 @@
   },
   "MODAL": {
     "CONFIRM_BUTTON": "Да",
-    "REJECT_BUTTON": "Нет"
+    "REJECT_BUTTON": "Нет",
+    "CREATE_BOARD_BUTTON": "Создать",
+    "CANCEL_BUTTON": "Отмена"
+  },
+  "CREATE_BOARD": {
+    "TITLE": "Заголовок:",
+    "DESCR": "Описание:"
   },
   "EDIT_PROFILE": {
     "TITLE": "Редактировать профиль:",
