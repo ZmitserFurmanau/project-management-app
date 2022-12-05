@@ -9,7 +9,6 @@ import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { signIn, clearError } from '~/store/reducers/authSlice';
 import Loader from '~/components/Loader';
 import { LoginRequest } from '~/types/api';
-import Footer from '~/components/Footer';
 
 import styles from './LoginPage.module.scss';
 
@@ -106,9 +105,6 @@ const LoginPage: FC = () => {
             ← {t('BUTTON_BACK')}
           </Button>
         </div>
-      </div>
-      <div className="footer-wrapper">
-        <Footer />
       </div>
     </>
   );

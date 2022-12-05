@@ -9,12 +9,9 @@
   }
 }
 
-.rs-wrapper,
-.github-img {
-  filter: invert(100%);
-}
-
 .rs-wrapper {
+  filter: invert(100%);
+
   @media screen and (max-width: 500px) {
     display: none;
   }
@@ -37,7 +34,7 @@
 }
 
 .github-item {
-  width: 150px;
+  width: 260px;
   margin-top: 10px;
   margin-bottom: 10px;
 }

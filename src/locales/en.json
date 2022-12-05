@@ -54,8 +54,8 @@
     "TASKS_COUNT": "Tasks: "
   },
   "WELCOME_PAGE": {
-    "SUBTITLE": "project management system",
-    "DESCR": "The application helps to achieve the set goals for an individual in a team or group of developers",
+    "SUBTITLE": "a convenient application for the to-do list",
+    "DESCR": "With this program, you can plan your business, make shopping lists and much more. The application has the ability to add your notes and create your own lists, for example, a shopping list or a to-do list for the day",
     "DESCR_RS": "The application was completed as the final task of the course ",
     "TEAM_TITLE": "Our team:"
   }

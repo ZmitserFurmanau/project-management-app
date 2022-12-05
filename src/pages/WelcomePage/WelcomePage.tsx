@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
 import { resetIsDeleted } from '~/store/reducers/authSlice';
-import Footer from '~/components/Footer';
 
 import styles from './WelcomePage.module.scss';
 
@@ -48,7 +47,10 @@ const WelcomePage: FC = () => {
             <div className={styles.info}>
               <p className={styles.descr}>
                 {t('WELCOME_PAGE.DESCR_RS')}
-                <a href="https://rs.school/react/" target="__blank">
+                <a
+                  href="https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/project-management-system-EN.md"
+                  target="__blank"
+                >
                   Rolling Scopes School React2022Q3
                 </a>
               </p>
@@ -73,26 +75,25 @@ const WelcomePage: FC = () => {
               </a>
             </div>
             <div className={styles.teamRow}>
-              <img className={styles.avatar} src="/assets/img/team_alexander_li.png" alt="" />
-              <p className={styles.member}>Alexander Li</p>
-              <a href="https://github.com/alexandr2075" target="__blank" className={styles.github}>
-                <img src="/assets/img/logo-github.svg" alt="" />
-              </a>
-            </div>
-            <div className={styles.teamRow}>
               <img className={styles.avatar} src="/assets/img/team_anton_gorshkov.png" alt="" />
               <p className={styles.member}>Anton Gorshkov</p>
               <a href="https://github.com/Glav-Tz" target="__blank" className={styles.github}>
                 <img src="/assets/img/logo-github.svg" alt="" />
               </a>
             </div>
+            <div className={styles.teamRow}>
+              <img className={styles.avatar} src="/assets/img/team_alexandr_li.png" alt="" />
+              <p className={styles.member}>Alexandr Li</p>
+              <a href="https://github.com/alexandr2075" target="__blank" className={styles.github}>
+                <img src="/assets/img/logo-github.svg" alt="" />
+              </a>
+            </div>
           </div>
           <div className={styles.imgWrapper}>
-            <img src="/assets/img/team.jpg" alt="" width="1000" />
+            <img src="/assets/img/team.png" alt="" width="1000" />
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -9,7 +9,6 @@ import { getAllBoards, getBoard } from '~/services/boards';
 import { setBoards } from '~/store/reducers/boardSlice';
 import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
 import { BoardData } from '~/types/api';
-import Footer from '~/components/Footer';
 
 import styles from './MainPage.module.scss';
 
@@ -89,9 +88,6 @@ const MainPage: FC = () => {
             })}
           </List>
         )}
-      </div>
-      <div className="footer-wrapper">
-        <Footer />
       </div>
     </div>
   );

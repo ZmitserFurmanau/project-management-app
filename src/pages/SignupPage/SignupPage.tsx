@@ -9,7 +9,6 @@ import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { signUp, signIn, resetRegistrationStatus, clearError } from '~/store/reducers/authSlice';
 import Loader from '~/components/Loader';
 import { SignUpRequest } from '~/types/api';
-import Footer from '~/components/Footer';
 
 import styles from './SignupPage.module.scss';
 
@@ -142,9 +141,6 @@ const SignupPage: FC = () => {
             ← {t('BUTTON_BACK')}
           </Button>
         </div>
-      </div>
-      <div className="footer-wrapper">
-        <Footer />
       </div>
     </>
   );

@@ -14,20 +14,17 @@ const Footer: FC = () => {
         <div className={styles.githubNames}>
           <div className={styles.githubItem}>
             <a className={styles.githubLink} href="https://github.com/ZmitserFurmanau" target="__blank">
-              <img className={styles.githubImg} src="/assets/img/logo-github.svg" alt="" />
               <span className={styles.githubName}>Zmitser Furmanau</span>
             </a>
           </div>
           <div className={styles.githubItem}>
-            <a className={styles.githubLink} href="https://github.com/alexandr2075" target="__blank">
-              <img className={styles.githubImg} src="/assets/img/logo-github.svg" alt="" />
-              <span className={styles.githubName}>Alexander Li</span>
+            <a className={styles.githubLink} href="https://github.com/Glav-Tz" target="__blank">
+              <span className={styles.githubName}>Anton Gorshkov</span>
             </a>
           </div>
           <div className={styles.githubItem}>
-            <a className={styles.githubLink} href="https://github.com/Glav-Tz" target="__blank">
-              <img className={styles.githubImg} src="/assets/img/logo-github.svg" alt="" />
-              <span className={styles.githubName}>Anton Gorshkov</span>
+            <a className={styles.githubLink} href="https://github.com/alexandr2075" target="__blank">
+              <span className={styles.githubName}>Alexandr Li</span>
             </a>
           </div>
         </div>

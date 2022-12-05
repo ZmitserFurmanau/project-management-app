@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import ConfirmationModal from '~/components/ConfirmationModal';
 import { clearError, resetIsUpdated, updateUser, logOut, setIsDeleted } from '~/store/reducers/authSlice';
 import { deleteUser } from '~/services/users';
-import Footer from '~/components/Footer';
 
 import styles from './EditProfilePage.module.scss';
 
@@ -171,9 +170,6 @@ const EditProfilePage: FC = () => {
           </Button>
         </div>
         <ConfirmationModal text={t('EDIT_PROFILE.DELETE_MSG')} callback={onModalClick} isActive={isModalActive} />
-      </div>
-      <div className="footer-wrapper">
-        <Footer />
       </div>
     </>
   );
