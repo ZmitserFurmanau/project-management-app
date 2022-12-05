@@ -5,3 +5,9 @@ export const ItemTypes = {
   COLUMN: 'column',
   ITEM: 'item',
 };
+
+export const searchCategory = {
+  TITLE: 'title',
+  DESCRIPTION: 'description',
+  USER: 'user',
+};

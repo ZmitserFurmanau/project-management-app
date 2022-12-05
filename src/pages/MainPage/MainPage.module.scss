@@ -1,16 +1,14 @@
 .mainPage {
-  padding: 10px 20px;
-  display: flex;
+  max-width: 1920px;
+  padding: 15px;
 }
 
 .board {
   max-width: 250px;
   min-height: 50px;
-  padding: 5px;
+  padding: 5px 15px;
   width: 100%;
-  height: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
   border-width: 1px;
   border-color: rgb(110, 110, 110);
@@ -25,22 +23,13 @@
 }
 
 .main_route_sidebar {
-  min-width: 330px;
   padding: 5px;
-  justify-content: center;
   background-color: #f9f9f9;
   border-radius: 1rem;
   border-color: #f9f9f9;
   border-style: solid;
   box-shadow: 0 0 12px 0 #bcbcbc;
   color: rgb(110, 110, 110);
-}
-
-.boardDefaulted {
-  background-color: #f9f9f9;
-  border-color: #f9f9f9;
-  border-style: solid;
-  box-shadow: 0 0 12px 0 #bcbcbc;
 }
 
 .board:hover {
@@ -55,15 +44,25 @@
   margin: 10px 0;
   border-radius: 15px;
   border-width: 1px;
-  border-color: #f9f9f9;
+  border-color: transparent;
   border-style: solid;
-  box-shadow: 0 0 12px 0 #bcbcbc;
   max-width: 300px;
   min-height: 100px;
+  min-width: 240px;
+  margin: 34px;
+  position: relative;
+
+  @media screen and (max-width: 800px) {
+    max-width: 230px;
+    transform: scale(0.85);
+  }
 }
 
 .deleteIcon_wrapper {
-  margin-bottom: 4.5rem;
+  transform: scale(1.4);
+  position: absolute;
+  top: 15px;
+  right: -20px;
 }
 
 .deleteIcon:not(:hover) {
@@ -78,4 +77,14 @@
   transition: 0.2s;
   opacity: 1;
   transform: rotate(-45deg);
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
