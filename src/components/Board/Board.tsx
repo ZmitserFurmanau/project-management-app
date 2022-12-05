@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useTranslation } from 'react-i18next';
 
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
 import { getAllColumns } from '~/services/columns';
 import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
 import { ColumnData, TaskData } from '~/types/api';
-import { columnOptions } from '~/utils/constants';
+import { ModalWindowFormOptions } from '~/types/board';
 import BoardAddItem from '../BoardAddItem';
 import BoardColumn from '../BoardColumn';
 
@@ -18,6 +19,13 @@ const Board: FC = () => {
   const { currentBoard } = useAppSelector(state => state.currentBoard);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const columnOptions: ModalWindowFormOptions = {
+    type: 'column',
+    btnTitle: t('BOARD.BUTTON_ADD_A_COLUMN'),
+    placeholderText: t('BOARD.BUTTON_ADD_A_COLUMN_PLACEHOLDER'),
+  };
 
   const moveBack = () => {
     navigate('/mainPage');
@@ -68,7 +76,7 @@ const Board: FC = () => {
     <DndProvider backend={HTML5Backend}>
       <div className={styles.boardContainer}>
         <Button variant="outlined" type="button" onClick={moveBack} sx={{ margin: '10px' }}>
-          ← Назад
+          ← {t('BOARD.BUTTON_BACK')}
         </Button>
         <div className={styles.board}>
           {currentBoard.columns &&

@@ -1,4 +1,5 @@
 @import 'normalize.css/normalize.css';
+@import 'react-toastify/dist/ReactToastify.css';
 @import 'fonts';
 
 body {
@@ -48,7 +49,7 @@ a {
 .slide-checkbox {
   display: none;
 
-  + .custom-checkbox {
+  +.custom-checkbox {
     outline: 0;
     display: block;
     width: 50px;
@@ -85,11 +86,21 @@ a {
     }
   }
 
-  &:checked + .custom-checkbox {
+  &:checked+.custom-checkbox {
     background: #b39eff;
   }
 
-  &:checked + .custom-checkbox:after {
+  &:checked+.custom-checkbox:after {
     left: 50%;
   }
+}
+
+.overlay {
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, .5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

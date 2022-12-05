@@ -2,6 +2,10 @@
   "LOGIN_LINK": "Войти",
   "SIGNUP_LINK": "Зарегистрироваться",
   "LOGOUT_LINK": "Выйти",
+  "EDIT_PROFILE_LINK": "Редактировать профиль",
+  "BUTTON_BACK": "Назад",
+  "BUTTON_SAVE": "Сохранить",
+  "BUTTON_DELETE_USER": "Удалить профиль",
   "LOGIN": {
     "LOGIN_LABEL": "Логин:",
     "PASSWORD_LABEL": "Пароль:",
@@ -18,7 +22,6 @@
     "LOGIN_LABEL": "Логин:",
     "PASSWORD_LABEL": "Пароль:",
     "BUTTON_LABEL": "Зарегистрироваться",
-    "BUTTON_BACK": "Назад",
     "NAME_REQUIRED": "обязательное поле",
     "NAME_INVALID": "должно быть от 2 символов и более",
     "LOGIN_REQUIRED": "обязательное поле",
@@ -27,6 +30,21 @@
     "PASSWORD_INVALID": "должно быть от 6 символов и более"
   },
   "BOARD": {
+    "BUTTON_BACK": "Назад",
+    "BUTTON_ADD_A_COLUMN": "Добавить колонку",
+    "BUTTON_ADD_A_COLUMN_PLACEHOLDER": "Ввести заголовок колонки...",
+    "BUTTON_ADD_A_TASK": "Добавить таску",
+    "BUTTON_ADD_A_TASK_PLACEHOLDER": "Ввести заголовок таски..."
+  },
+  "MODAL": {
+    "CONFIRM_BUTTON": "Да",
+    "REJECT_BUTTON": "Нет"
+  },
+  "EDIT_PROFILE": {
+    "TITLE": "Редактировать профиль:",
+    "DONE": "Данные профиля успешно обновлены",
+    "DELETE_MSG": "Вы подтверждаете удаление пользователя? Это действие необратимо",
+    "USER_DELETED": "Пользователь успешно удален"
   },
   "MAIN_ROUTE": {
     "CREATE_BOARD": "Создать доску",

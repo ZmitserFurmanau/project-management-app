@@ -2,6 +2,10 @@
   "LOGIN_LINK": "Log in",
   "SIGNUP_LINK": "Sign up",
   "LOGOUT_LINK": "Log out",
+  "EDIT_PROFILE_LINK": "Edit profile",
+  "BUTTON_BACK": "Back",
+  "BUTTON_SAVE": "Save",
+  "BUTTON_DELETE_USER": "Delete user",
   "LOGIN": {
     "LOGIN_LABEL": "Login:",
     "PASSWORD_LABEL": "Password:",
@@ -18,7 +22,6 @@
     "LOGIN_LABEL": "Login:",
     "PASSWORD_LABEL": "Password:",
     "BUTTON_LABEL": "Register",
-    "BUTTON_BACK": "Back",
     "NAME_REQUIRED": "required field",
     "NAME_INVALID": "must be 2 characters or more",
     "LOGIN_REQUIRED": "required field",
@@ -27,6 +30,21 @@
     "PASSWORD_INVALID": "must be 6 characters or more"
   },
   "BOARD": {
+    "BUTTON_BACK": "Back",
+    "BUTTON_ADD_A_COLUMN": "Add a column",
+    "BUTTON_ADD_A_COLUMN_PLACEHOLDER": "Enter column title...",
+    "BUTTON_ADD_A_TASK": "Add a task",
+    "BUTTON_ADD_A_TASK_PLACEHOLDER": "Enter task title..."
+  },
+  "MODAL": {
+    "CONFIRM_BUTTON": "Yes",
+    "REJECT_BUTTON": "No"
+  },
+  "EDIT_PROFILE": {
+    "TITLE": "Edit profile:",
+    "DONE": "Profile data successfully updated",
+    "DELETE_MSG": "Do you confirm user deletion? This action is irreversible",
+    "USER_DELETED": "User successfully deleted"
   },
   "MAIN_ROUTE": {
     "CREATE_BOARD": "Create board",
