@@ -1,7 +1,6 @@
 import React, { FC, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-const App = lazy(() => import('../App'));
 const LoginPage = lazy(() => import('~/pages/LoginPage'));
 const SignupPage = lazy(() => import('~/pages/SignupPage'));
 const EditProfilePage = lazy(() => import('~/pages/EditProfilePage'));
@@ -15,35 +14,43 @@ import Loader from '~/components/Loader';
 
 const AppRouter: FC = () => {
   const { isLogged } = useAppSelector(state => state.auth);
+
   return (
     <ErrorBoundary>
       <Suspense
         fallback={
           <div
-            style={{ width: '100vw', height: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             <Loader />
           </div>
         }
       >
         <Routes>
-          <Route path="/" element={<App />}>
-            {isLogged ? (
-              <>
-                <Route index element={<MainPage />} />
-                <Route path="logout" element={<Logout />} />
-                <Route path="profile" element={<EditProfilePage />} />
-                <Route path="board" element={<Board />} />
-              </>
-            ) : (
-              <>
-                <Route index element={<WelcomePage />} />
-                <Route path="login" element={<LoginPage />} />
-                <Route path="signup" element={<SignupPage />} />
-              </>
-            )}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
+          {isLogged ? (
+            <>
+              <Route index element={<MainPage />} />
+              <Route path="logout" element={<Logout />} />
+              <Route path="profile" element={<EditProfilePage />} />
+              <Route path="board/:id" element={<Board />} />
+            </>
+          ) : (
+            <>
+              <Route index element={<WelcomePage />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="signup" element={<SignupPage />} />
+            </>
+          )}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>

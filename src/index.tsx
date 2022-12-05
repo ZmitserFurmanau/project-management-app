@@ -4,9 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 
-import { store } from './store';
-import AppRouter from './router/AppRouter';
 import { setupInterceptorsTo } from '~/utils/axiosInterceptors';
+import { store } from './store';
+import App from './App';
 
 setupInterceptorsTo(axios);
 
@@ -17,7 +17,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <AppRouter />
+        <App />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
@@ -25,6 +25,7 @@ root.render(
 
 window.addEventListener('message', e => {
   if (e.data && typeof e.data === 'string' && e.data.match(/webpackHotUpdate/)) {
+    // eslint-disable-next-line no-console
     console.clear();
   }
 });

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -23,6 +23,7 @@ const Board: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { id: currentBoardId } = useParams();
 
   const columnOptions: ModalWindowFormOptions = {
     type: 'column',
@@ -31,16 +32,16 @@ const Board: FC = () => {
   };
 
   const moveBack = () => {
-    navigate('/mainPage');
+    navigate('/');
   };
 
   useEffect(() => {
     const getColumns = async (): Promise<void> => {
-      if (currentBoard.id) {
-        const columns = await getAllColumns(currentBoard.id);
+      if (currentBoardId) {
+        const columns = await getAllColumns(currentBoardId);
         dispatch(
           setCurrentBoard({
-            id: currentBoard.id,
+            id: currentBoardId,
             title: currentBoard.title,
             columns: columns as ColumnData[],
           }),
@@ -48,7 +49,7 @@ const Board: FC = () => {
       }
     };
     getColumns();
-  }, [currentBoard.id, currentBoard.title, dispatch]);
+  }, [currentBoardId, currentBoard.title, dispatch]);
 
   const moveColumn = useCallback(
     (draggedColumnId: string, hoveredColumnId: string): void => {
@@ -64,7 +65,7 @@ const Board: FC = () => {
           updatedColumns[hoverItemIndex] = draggedColumn;
           dispatch(
             setCurrentBoard({
-              id: currentBoard.id,
+              id: currentBoardId as string,
               title: currentBoard.title,
               columns: updatedColumns,
             }),
@@ -72,7 +73,7 @@ const Board: FC = () => {
         }
       }
     },
-    [currentBoard.columns, currentBoard.id, currentBoard.title, dispatch],
+    [currentBoard.columns, currentBoardId, currentBoard.title, dispatch],
   );
 
   // useEffect(() => {

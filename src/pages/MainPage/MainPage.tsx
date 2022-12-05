@@ -21,11 +21,13 @@ const MainPage: FC = () => {
   const { boards } = useAppSelector(state => state.boards);
   const { isLogged, error } = useAppSelector(state => state.auth);
   const [countArr, setCountArr] = useState<BoardData[]>([]);
+
   const [pageState, setPageState] = useState({
     state: false,
     boardOnDelete: '',
     isLoading: false,
   });
+
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -97,7 +99,7 @@ const MainPage: FC = () => {
             {boards.map((board: BoardData) => {
               return (
                 <ListItem key={board.id} onClick={() => openBoard(board.id)} className={styles.boardWrapper}>
-                  <NavLink to="board" className={styles.board}>
+                  <NavLink to={`board/${board.id}`} className={styles.board}>
                     {countArr && (
                       <List>
                         <ListItem>{board.title}</ListItem>
