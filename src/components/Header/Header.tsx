@@ -17,7 +17,7 @@ const Header: FC = () => {
 
   useEffect(() => {
     window.onscroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 75) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -60,7 +60,7 @@ const Header: FC = () => {
           <LangCheckbox />
         </div>
       </div>
-      <div style={{ height: isSticky ? '65px' : '130px' }}></div>
+      <div style={{ height: '130px' }}></div>
     </>
   );
 };
