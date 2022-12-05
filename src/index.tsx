@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import axios from 'axios';
-
-import { store } from './store';
-import AppRouter from './router/AppRouter';
 import { setupInterceptorsTo } from '~/utils/axiosInterceptors';
+import { store } from './store';
+import App from './App';
 
 setupInterceptorsTo(axios);
 
@@ -14,13 +13,13 @@ const container = document.getElementById('app') as HTMLElement;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <AppRouter />
+        <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
 );
 
 window.addEventListener('message', e => {

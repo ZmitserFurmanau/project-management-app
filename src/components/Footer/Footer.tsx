@@ -4,27 +4,34 @@ import styles from './Footer.module.scss';
 
 const Footer: FC = () => {
   return (
-    <div className={styles.footer}>
-      <div className={styles.footer__project}>
-        <a href="https://rs.school/react/">
-          <img className={styles.footer__project_school} src={require(`../../assets/rs.svg`)} alt="logoRs" />
-        </a>
-        <a href="https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/project-management-system-EN.md">
-          <img className={styles.footer__project_task} src={require(`../../assets/github.png`)} alt="logoGit" />
-        </a>
+    <div className={styles.wrapper}>
+      <div className={styles.wrapperInner}>
+        <div className={styles.rsWrapper}>
+          <a href="https://rs.school/react/" target="__blank">
+            <img width="119" height="35" src="/assets/img/rs_school_js.svg" alt="" />
+          </a>
+        </div>
+        <div className={styles.githubNames}>
+          <div className={styles.githubItem}>
+            <a className={styles.githubLink} href="https://github.com/ZmitserFurmanau" target="__blank">
+              <span className={styles.githubName}>Zmitser Furmanau</span>
+            </a>
+          </div>
+          <div className={styles.githubItem}>
+            <a className={styles.githubLink} href="https://github.com/Glav-Tz" target="__blank">
+              <span className={styles.githubName}>Anton Gorshkov</span>
+            </a>
+          </div>
+          <div className={styles.githubItem}>
+            <a className={styles.githubLink} href="https://github.com/alexandr2075" target="__blank">
+              <span className={styles.githubName}>Alexandr Li</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div className={styles.copy}>© {new Date().getFullYear()}</div>
+        </div>
       </div>
-      <div className={styles.footer__team}>
-        <a className={styles.footer__team_link} href="https://github.com/ZmitserFurmanau">
-          Zmitser Furmanau
-        </a>
-        <a className={styles.footer__team_link} href="https://github.com/alexandr2075">
-          Alexander Li
-        </a>
-        <a className={styles.footer__team_link} href="https://github.com/Glav-Tz">
-          Anton Gorshkov
-        </a>
-      </div>
-      <div className={styles.footer__year}>2022г.</div>
     </div>
   );
 };

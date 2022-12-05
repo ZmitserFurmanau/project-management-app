@@ -1,10 +1,12 @@
 @import 'normalize.css/normalize.css';
+@import 'react-toastify/dist/ReactToastify.css';
 @import 'fonts';
 
 body {
   font-family: 'Montserrat' !important;
   scrollbar-width: thin;
   scrollbar-color: #919191 #e4e4e4;
+  background-color: $background-color;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -22,17 +24,20 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   max-width: 1920px;
   margin: 0 auto;
-  width: 100vw;
-  height: 100vh;
 }
 
 a {
   text-decoration: none;
   color: inherit;
   transition: color 0.3s, border-bottom 0.3s;
+  color: $base-color;
 
   &:hover {
     color: #ffbb00;
@@ -61,7 +66,7 @@ a {
     margin-top: 3px;
     cursor: pointer;
     user-select: none;
-    background: #fac473;
+    background: darken($background-color, 15%);
     border-radius: 2em;
     padding: 2px;
     transition: all 0.4s ease;
@@ -88,10 +93,31 @@ a {
   }
 
   &:checked + .custom-checkbox {
-    background: #b39eff;
+    background: lighten($base-color, 7%);
   }
 
   &:checked + .custom-checkbox:after {
     left: 50%;
   }
+}
+
+.overlay,
+.ReactModal__Overlay {
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticky {
+  height: 85px;
+  top: 0;
+  background-color: #b0d0ff;
 }

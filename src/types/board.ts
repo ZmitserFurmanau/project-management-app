@@ -17,6 +17,7 @@ export interface BoardTaskProps {
   userId: string;
   boardId: string;
   columnId: string;
+  setHoveredTaskId?: (setHoveredTaskId: string) => void;
 }
 
 export interface ModalWindowFormOptions {
@@ -42,4 +43,19 @@ export interface ModalWindowProps {
   options: ModalWindowFormProps;
   setData: SetDataType;
   handleCloseModal: CallBackProps;
+}
+
+export interface UpdateColumnTasks {
+  columnId: string;
+  tasks: TaskData[];
+}
+
+export interface DeleteTask {
+  columnId: string;
+  taskId: string;
+}
+
+export interface UpdateColumn {
+  title: string;
+  columnId: string;
 }
