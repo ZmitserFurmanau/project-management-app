@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { signIn, clearError } from '~/store/reducers/authSlice';
@@ -101,7 +100,7 @@ const LoginPage: FC = () => {
         <Loader />
       </div>
       <Button variant="outlined" type="button" onClick={moveBack} sx={{ position: 'absolute', right: 25, top: 25 }}>
-        ← {t('LOGIN.BUTTON_BACK')}
+        ← {t('BUTTON_BACK')}
       </Button>
     </div>
   );
