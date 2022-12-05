@@ -3,12 +3,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
-import { resetIsDeleted } from '~/store/reducers/authSlice';
+import { resetIsDeleted, clearError } from '~/store/reducers/authSlice';
 
 import styles from './WelcomePage.module.scss';
 
 const WelcomePage: FC = () => {
-  const { isDeleted } = useAppSelector(state => state.auth);
+  const { isDeleted, error } = useAppSelector(state => state.auth);
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -18,9 +18,20 @@ const WelcomePage: FC = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     return () => {
-      dispatch(resetIsDeleted());
+      isDeleted && dispatch(resetIsDeleted());
     };
   }, [dispatch, isDeleted, t]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (error) {
+        toast.error(error, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+        dispatch(clearError());
+      }
+    }, 500);
+  }, [dispatch, error]);
 
   return (
     <>

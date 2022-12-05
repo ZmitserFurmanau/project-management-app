@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
 
 import { useAppSelector, useAppDispatch } from '~/hooks/redux';
 import { getAllColumns } from '~/services/columns';
@@ -12,7 +13,8 @@ import { ColumnData, TaskData } from '~/types/api';
 import { ModalWindowFormOptions } from '~/types/board';
 import BoardAddItem from '../BoardAddItem';
 import BoardColumn from '../BoardColumn';
-import Footer from '~/components/Footer';
+// import { clearError } from '~/store/reducers/authSlice';
+// import Footer from '~/components/Footer';
 
 import styles from './Board.module.scss';
 
@@ -73,6 +75,15 @@ const Board: FC = () => {
     [currentBoard.columns, currentBoard.id, currentBoard.title, dispatch],
   );
 
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error, {
+  //       position: toast.POSITION.BOTTOM_RIGHT,
+  //     });
+  //     dispatch(clearError());
+  //   }
+  // }, [dispatch, error]);
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className={styles.boardContainer}>
@@ -95,10 +106,11 @@ const Board: FC = () => {
             })}
           <BoardAddItem options={columnOptions} columnId={''} />
         </div>
-        <div className="footer-wrapper">
+        {/* <div className="footer-wrapper">
           <Footer />
-        </div>
+        </div> */}
       </div>
+      <ToastContainer />
     </DndProvider>
   );
 };

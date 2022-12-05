@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { List, ListItem } from '@mui/material';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
 import { deleteBoard, getAllBoards, getBoard } from '~/services/boards';
@@ -11,13 +12,14 @@ import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
 import { BoardData } from '~/types/api';
 import Loader from '~/components/Loader';
 import ConfirmationModal from '~/components/ConfirmationModal';
+import { clearError } from '~/store/reducers/authSlice';
 // import SearchForm from '~/components/SearchForm/SearchForm';
 
 import styles from './MainPage.module.scss';
 
 const MainPage: FC = () => {
   const { boards } = useAppSelector(state => state.boards);
-  const { isLogged } = useAppSelector(state => state.auth);
+  const { isLogged, error } = useAppSelector(state => state.auth);
   const [countArr, setCountArr] = useState<BoardData[]>([]);
   const [pageState, setPageState] = useState({
     state: false,
@@ -59,6 +61,15 @@ const MainPage: FC = () => {
       : 0;
     return { columns, tasksNumber };
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      dispatch(clearError());
+    }
+  }, [dispatch, error]);
 
   useEffect(() => {
     if (isLogged) {
@@ -120,6 +131,7 @@ const MainPage: FC = () => {
       <div style={{ opacity: pageState.isLoading ? 1 : 0 }}>
         <Loader />
       </div>
+      <ToastContainer />
     </div>
   );
 };

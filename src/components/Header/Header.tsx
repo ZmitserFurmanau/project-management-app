@@ -6,11 +6,12 @@ import Button from '@mui/material/Button';
 import { useAppSelector } from '~/hooks/redux';
 import LangCheckbox from '../LangCheckbox';
 import BoardCreateModal from '../BoardCreateModal';
+import { getGreeting } from '~/utils/getGreeting';
 
 import styles from './Header.module.scss';
 
 const Header: FC = () => {
-  const { isLogged } = useAppSelector(state => state.auth);
+  const { isLogged, name } = useAppSelector(state => state.auth);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -37,6 +38,7 @@ const Header: FC = () => {
         <div className={styles.navbar}>
           {isLogged ? (
             <>
+              <p className={styles.greeting}>{`${getGreeting()}, ${name}`}</p>
               <Button variant="contained" onClick={() => navigate('/logout')} sx={{ margin: 0.5 }}>
                 {t('LOGOUT_LINK')}
               </Button>
